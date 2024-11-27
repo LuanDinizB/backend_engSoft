@@ -2,10 +2,10 @@
   "name": "trab-tiago",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.ts",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node-dev src/index.ts",
+    "start": "tsc && node build/src/index.js",
     "build": "tsc"
   },
   "author": "",
