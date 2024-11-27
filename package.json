@@ -2,10 +2,11 @@
   "name": "trab-tiago",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node build/src/index.js"
+    "start": "tsc && node build/src/index.js",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
@@ -18,7 +19,9 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "knex": "^3.1.0",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.2"
   },
   "devDependencies": {
     "@types/express": "^5.0.0"
