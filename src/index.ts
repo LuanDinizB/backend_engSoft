@@ -11,9 +11,9 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use("/", askGemini);
-app.get("/teste", (req: Request, res: Response) =>{
-  res.send("teste")
-})
+app.get("/teste", (req: Request, res: Response) => {
+  res.send("teste");
+});
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
