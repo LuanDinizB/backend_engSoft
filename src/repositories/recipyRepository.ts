@@ -3,6 +3,16 @@ import config from "../../knexfile";
 
 const db = knex(config);
 
+
+export async function getAllrecipes(): Promise<any | undefined> {
+    try {
+      const user = await db("recipes");
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
+
 export async function findRecipyByName(name: string): Promise<any | undefined> {
   try {
     const user = await db("recipes").where("name", name).first();
@@ -35,15 +45,6 @@ export async function createRecipy(
   }
 }
 
-export async function deleteRecipy(id: number): Promise<any> {
-  try {
-    const user: any = await db("recipes").delete().where({ id });
-    return user;
-  } catch (error) {
-    throw error;
-  }
-}
-
 export async function updateRecipy(
   id: number,
   name: string,
@@ -69,9 +70,19 @@ export async function updateRecipy(
   }
 }
 
+export async function deleteRecipy(id: number): Promise<any> {
+    try {
+      const user: any = await db("recipes").delete().where({ id });
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
+
 export default {
   findRecipyByName,
   createRecipy,
   updateRecipy,
-  deleteRecipy
+  deleteRecipy,
+  getAllrecipes
 };
