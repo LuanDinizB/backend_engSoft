@@ -1,9 +1,8 @@
 import { Knex } from "knex";
 
 export async function up(knex: Knex): Promise<void> {
-  await knex.schema.createTable("feedback", function (table) {
+  await knex.schema.createTable("favorite", function (table) {
     table.increments("id").primary();
-    table.text("commentary");
     table
       .integer("user_id")
       .notNullable()
@@ -16,10 +15,10 @@ export async function up(knex: Knex): Promise<void> {
       .references("id")
       .inTable("recipes")
       .onDelete("CASCADE"); // Add recipe_id foreign key
-    table.text("recipe");
+    table.string("date");
   });
 }
 
 export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTableIfExists("feedback");
+  await knex.schema.dropTableIfExists("favorite");
 }
