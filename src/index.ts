@@ -2,6 +2,7 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { askGemini } from "./routes/geminiRoute";
+import { recipyRoute } from "./routes/recipyRoute";
 import cors from "cors";
 
 dotenv.config();
@@ -13,6 +14,7 @@ app.use(cors({ origin: '*' }));
 app.use(express.json());
 app.use(cors<Request>());
 app.use("/", askGemini);
+app.use("/", recipyRoute);
 app.get("/teste", (req: Request, res: Response) => {
   res.send("teste");
 });
