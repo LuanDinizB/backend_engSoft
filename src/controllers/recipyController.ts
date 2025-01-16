@@ -5,7 +5,7 @@ import recipyService from "../services/recipyService";
 
 const db = knex(config);
 
- async function findRecipyByEmail(req: Request, res: Response): Promise<any | undefined> {
+ async function findRecipyByName(req: Request, res: Response): Promise<any | undefined> {
   try {
     const email = req.body.email;
     const recipy = await recipyService.getRecipyByName(email);
@@ -66,7 +66,7 @@ const db = knex(config);
 }
 
 export default {
-  findRecipyByEmail,
+  findRecipyByName,
   createRecipy,
   updateRecipy,
   updateRecipyPassword,

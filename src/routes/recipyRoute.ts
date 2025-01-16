@@ -1,8 +1,8 @@
 import recipyController from '../controllers/recipyController';
 import { Router } from 'express';
 
-const askGemini: Router = Router();
+const recipyRoute: Router = Router();
 
-askGemini.get('/getRecipy', recipyController.findRecipyByEmail);
+recipyRoute.get('/getRecipy', recipyController.findRecipyByName);
 
-export { askGemini };
+export { recipyRoute };
