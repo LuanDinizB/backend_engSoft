@@ -8,7 +8,7 @@ export async function up(knex: Knex): Promise<void> {
     table.string("prepareTime");
     table.enum("difficulty", ["easy", "medium", "hard"]);
     table.string("prepareMode");
-    table.boolean("sustenstable");
+    table.boolean("sustentable");
     table
       .integer("user_id")
       .notNullable()
