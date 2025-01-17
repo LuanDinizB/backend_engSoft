@@ -12,7 +12,7 @@ async function getAllrecipes(req: Request, res: Response): Promise<any | undefin
     const recipes = await recipeService.getAllrecipes();
     res.status(200).send(recipes);
   } catch (error) {
-    res.send(`Error while finding by email: ${error}`);
+    res.send(`Error while getting all recipes: ${error}`);
   }
 }
 
@@ -22,7 +22,7 @@ async function getAllrecipes(req: Request, res: Response): Promise<any | undefin
     const recipe = await recipeService.getRecipyByName(name);
     res.status(200).send(recipe);
   } catch (error) {
-    res.send(`Error while finding by email: ${error}`);
+    res.send(`Error while getting by name: ${error}`);
   }
 }
 
@@ -32,7 +32,7 @@ async function createRecipe(req: Request, res: Response): Promise<any | undefine
     await recipeService.createRecipy(body);
     res.status(200).send("Created with success");
   } catch (error) {
-    res.send(`Error while finding by email: ${error}`);
+    res.send(`Error while creating recipe: ${error}`);
   }
 }
 
@@ -43,7 +43,7 @@ async function updateRecipe(req: Request, res: Response): Promise<any | undefine
     const recipe = await recipeService.updateRecipy(body.id,body);
     res.status(200).send(recipe);
   } catch (error) {
-    res.send(`Error while finding by email: ${error}`);
+    res.send(`Error while updating recipe: ${error}`);
   }
 }
 
@@ -54,7 +54,7 @@ async function deleteRecipe(req: Request, res: Response): Promise<any | undefine
     await recipeService.deleteRecipy(id)
     res.status(200).send("Recipe deleted");
   } catch (error) {
-    res.send(`Error while finding by email: ${error}`);
+    res.send(`Error while delete recipe: ${error}`);
   }
 }
 
