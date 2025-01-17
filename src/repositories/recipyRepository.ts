@@ -28,7 +28,7 @@ export async function createRecipy(
   prepareTime: string,
   difficulty: string,
   prepareMode: string,
-  sustentable: boolean,
+  sustentable: string,
   userId: number
 ): Promise<any> {
   try {
@@ -54,7 +54,7 @@ export async function updateRecipy(
   prepareTime: string,
   difficulty: string,
   prepareMode: string,
-  sustentable: boolean
+  sustentable: string
 ): Promise<void> {
   try {
     await db("recipes")
