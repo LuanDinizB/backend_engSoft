@@ -1,74 +1,68 @@
 import knex from "knex";
 import { Request, Response } from "express";
 import config from "../../knexfile";
-import recipyService from "../services/recipyService";
+import recipeService from "../services/recipyService";
 
 const db = knex(config);
 
- async function findRecipyByName(req: Request, res: Response): Promise<any | undefined> {
+
+
+async function getAllrecipes(req: Request, res: Response): Promise<any | undefined> {
   try {
-    const email = req.body.email;
-    const recipy = await recipyService.getRecipyByName(email);
-    return recipy;
+    const recipes = await recipeService.getAllrecipes();
+    res.status(200).send(recipes);
   } catch (error) {
     res.send(`Error while finding by email: ${error}`);
   }
 }
 
- async function createRecipy(
-  name: string,
-  email: string,
-  password: string
-): Promise<any> {
+ async function getByName(req: Request, res: Response): Promise<any | undefined> {
   try {
-    const recipy: any = await db("recipy").insert({
-      name,
-      email,
-      password
-    });
-    return recipy;
+    const name = req.body.name;
+    const recipe = await recipeService.getRecipyByName(name);
+    res.status(200).send(recipe);
   } catch (error) {
-    throw error;
+    res.send(`Error while finding by email: ${error}`);
   }
 }
 
- async function deleteRecipy(email: string): Promise<any> {
+async function createRecipe(req: Request, res: Response): Promise<any | undefined> {
   try {
-    const recipy: any = await db("recipy").delete().where({ email });
-    return recipy;
+    const body = req.body;
+    const recipe = await recipeService.createRecipy(body);
+    res.status(200).send(recipe);
   } catch (error) {
-    throw error;
+    res.send(`Error while finding by email: ${error}`);
   }
 }
 
- async function updateRecipy(email: string, data: object): Promise<void> {
+
+async function updateRecipe(req: Request, res: Response): Promise<any | undefined> {
   try {
-    await db("recipy").update(data).where({ email });
+    const body = req.body;
+    const recipe = await recipeService.updateRecipy(body.id,body);
+    res.status(200).send(recipe);
   } catch (error) {
-    throw error;
+    res.send(`Error while finding by email: ${error}`);
   }
 }
 
- async function updateRecipyPassword(
-  email: string,
-  password: string
-): Promise<void> {
+
+async function deleteRecipe(req: Request, res: Response): Promise<any | undefined> {
   try {
-    await db("pharmacy")
-      .update({
-        password,
-        data: null
-      })
-      .where({ email });
+    const id = req.body.id;
+    await recipeService.deleteRecipy(id)
+    res.status(200).send("Recipe deleted");
   } catch (error) {
-    throw error;
+    res.send(`Error while finding by email: ${error}`);
   }
 }
+
 
 export default {
-  findRecipyByName,
-  createRecipy,
-  updateRecipy,
-  updateRecipyPassword,
-  deleteRecipy
+  getAllrecipes,
+  createRecipe,
+  updateRecipe,
+  deleteRecipe,
+  getByName
 };
