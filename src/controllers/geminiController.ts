@@ -13,4 +13,4 @@ const generateContent = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export default  generateContent ;
+export default generateContent;

@@ -3,15 +3,14 @@ import config from "../../knexfile";
 
 const db = knex(config);
 
-
 export async function getAllrecipes(): Promise<any | undefined> {
-    try {
-      const user = await db("recipes");
-      return user;
-    } catch (error) {
-      throw error;
-    }
+  try {
+    const user = await db("recipes");
+    return user;
+  } catch (error) {
+    throw error;
   }
+}
 
 export async function findRecipyByName(name: string): Promise<any | undefined> {
   try {
@@ -73,13 +72,13 @@ export async function updateRecipy(
 }
 
 export async function deleteRecipy(id: number): Promise<any> {
-    try {
-      const user: any = await db("recipes").delete().where({ id });
-      return user;
-    } catch (error) {
-      throw error;
-    }
+  try {
+    const user: any = await db("recipes").delete().where({ id });
+    return user;
+  } catch (error) {
+    throw error;
   }
+}
 
 export default {
   findRecipyByName,
