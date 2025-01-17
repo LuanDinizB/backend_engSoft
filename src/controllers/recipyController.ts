@@ -29,8 +29,8 @@ async function getAllrecipes(req: Request, res: Response): Promise<any | undefin
 async function createRecipe(req: Request, res: Response): Promise<any | undefined> {
   try {
     const body = req.body;
-    const recipe = await recipeService.createRecipy(body);
-    res.status(200).send(recipe);
+    await recipeService.createRecipy(body);
+    res.status(200).send("Created with success");
   } catch (error) {
     res.send(`Error while finding by email: ${error}`);
   }

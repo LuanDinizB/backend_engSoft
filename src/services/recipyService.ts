@@ -11,7 +11,7 @@ const getRecipyByName = async (name: string) => {
 };
 
  const createRecipy = async (recipyData: any) => {
-    return await recipyRepository.createRecipy(recipyData.name, recipyData.ingredients, recipyData.prepareTime, recipyData.difficulty, recipyData.prepareMode, recipyData.sustentable);
+    return await recipyRepository.createRecipy(recipyData.name, recipyData.ingredients, recipyData.prepareTime, recipyData.difficulty, recipyData.prepareMode, recipyData.sustentable, recipyData.userId);
 };
 
  const updateRecipy = async (id:number, recipyData: any) => {

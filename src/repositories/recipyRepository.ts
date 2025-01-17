@@ -28,7 +28,8 @@ export async function createRecipy(
   prepareTime: string,
   difficulty: string,
   prepareMode: string,
-  sustentable: boolean
+  sustentable: boolean,
+  userId: number
 ): Promise<any> {
   try {
     const user: any = await db("recipes").insert({
@@ -37,7 +38,8 @@ export async function createRecipy(
       prepareTime,
       difficulty,
       prepareMode,
-      sustentable
+      sustentable,
+      userId
     });
     return user;
   } catch (error) {
