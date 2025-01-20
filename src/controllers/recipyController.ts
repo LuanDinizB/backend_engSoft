@@ -23,7 +23,7 @@ async function getById(
 ): Promise<any | undefined> {
   try {
     const id = req.body.id;
-    const recipe = await recipeService.getRecipyByName(id);
+    const recipe = await recipeService.getById(id);
     res.status(200).send(recipe);
   } catch (error) {
     res.send(`Error while getting by name: ${error}`);
