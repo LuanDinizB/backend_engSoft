@@ -59,7 +59,7 @@ const db = knex(config);
   password: string
 ): Promise<void> {
   try {
-    await db("pharmacy")
+    await db("user")
       .update({
         password,
         data: null

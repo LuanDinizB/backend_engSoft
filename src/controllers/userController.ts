@@ -36,10 +36,10 @@ async function createUser(
   res: Response
 ): Promise<any | undefined> {
   try {
-    const name = req.body;
-    const email = req.body;
-    const password = req.body;
-    await userService.createUser(name.id,email,password);
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+    await userService.createUser(name,email,password);
     res.status(200).send("Created with success");
   } catch (error) {
     res.send(`Error while creating user: ${error}`);

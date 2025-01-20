@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors<Request>());
 app.use("/", askGemini);
 app.use("/", recipyRoute);
-app.use("/", userRoute);
+app.use("/user", userRoute);
 app.get("/teste", (req: Request, res: Response) => {
   res.send("teste");
 });

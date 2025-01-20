@@ -3,14 +3,14 @@ import { Router } from "express";
 
 const userRoute: Router = Router();
 
-userRoute.get("/getRecipe", userController.findUserByEmail);
+userRoute.get("/get", userController.findUserByEmail);
 
 userRoute.get("/getById", userController.getById);
 
-userRoute.post("/createRecipe", userController.createUser);
+userRoute.post("/create", userController.createUser);
 
-userRoute.delete("/deleteRecipe", userController.deleteUser);
+userRoute.delete("/delete", userController.deleteUser);
 
-userRoute.post("/updateRecipe", userController.updateUser);
+userRoute.post("/update", userController.updateUser);
 
 export { userRoute };
