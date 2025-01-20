@@ -5,8 +5,17 @@ const db = knex(config);
 
 export async function getAllrecipes(): Promise<any | undefined> {
   try {
-    const user = await db("recipes");
-    return user;
+    const recipe = await db("recipes");
+    return recipe;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getById(id: number): Promise<any | undefined> {
+  try {
+    const recipe = await db("recipes").where("id", id).first();
+    return recipe;
   } catch (error) {
     throw error;
   }
@@ -14,8 +23,8 @@ export async function getAllrecipes(): Promise<any | undefined> {
 
 export async function findRecipyByName(name: string): Promise<any | undefined> {
   try {
-    const user = await db("recipes").where("name", name).first();
-    return user;
+    const recipe = await db("recipes").where("name", name).first();
+    return recipe;
   } catch (error) {
     throw error;
   }
@@ -31,7 +40,7 @@ export async function createRecipy(
   userId: number
 ): Promise<any> {
   try {
-    const user: any = await db("recipes").insert({
+    const recipe: any = await db("recipes").insert({
       name,
       ingredients,
       prepareTime,
@@ -40,7 +49,7 @@ export async function createRecipy(
       sustentable,
       userId
     });
-    return user;
+    return recipe;
   } catch (error) {
     throw error;
   }
@@ -73,8 +82,8 @@ export async function updateRecipy(
 
 export async function deleteRecipy(id: number): Promise<any> {
   try {
-    const user: any = await db("recipes").delete().where({ id });
-    return user;
+    const recipe: any = await db("recipes").delete().where({ id });
+    return recipe;
   } catch (error) {
     throw error;
   }
@@ -82,6 +91,7 @@ export async function deleteRecipy(id: number): Promise<any> {
 
 export default {
   findRecipyByName,
+  getById,
   createRecipy,
   updateRecipy,
   deleteRecipy,

@@ -17,6 +17,19 @@ async function getAllrecipes(
   }
 }
 
+async function getById(
+  req: Request,
+  res: Response
+): Promise<any | undefined> {
+  try {
+    const id = req.body.id;
+    const recipe = await recipeService.getRecipyByName(id);
+    res.status(200).send(recipe);
+  } catch (error) {
+    res.send(`Error while getting by name: ${error}`);
+  }
+}
+
 async function getByName(
   req: Request,
   res: Response
@@ -71,6 +84,7 @@ async function deleteRecipe(
 
 export default {
   getAllrecipes,
+  getById,
   createRecipe,
   updateRecipe,
   deleteRecipe,

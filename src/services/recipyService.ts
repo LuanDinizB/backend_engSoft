@@ -4,6 +4,10 @@ const getAllrecipes = async () => {
   return await recipyRepository.getAllrecipes();
 };
 
+const getById = async (id: number) => {
+  return await recipyRepository.getById(id);
+};
+
 const getRecipyByName = async (name: string) => {
   return await recipyRepository.findRecipyByName(name);
 };
@@ -38,6 +42,7 @@ const deleteRecipy = async (id: number) => {
 
 export default {
   getAllrecipes,
+  getById,
   getRecipyByName,
   createRecipy,
   updateRecipy,
