@@ -13,6 +13,6 @@ recipyRoute.post("/createRecipe", recipyController.createRecipe);
 
 recipyRoute.delete("/deleteRecipe", recipyController.deleteRecipe);
 
-recipyRoute.get("/updateRecipe", recipyController.updateRecipe);
+recipyRoute.post("/updateRecipe", recipyController.updateRecipe);
 
 export { recipyRoute };
