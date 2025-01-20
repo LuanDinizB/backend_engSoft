@@ -8,11 +8,16 @@ export async function up(knex: Knex): Promise<void> {
     table.string("prepareTime");
     table.enum("difficulty", ["easy", "medium", "hard"]);
     table.string("prepareMode");
-    table.boolean("susenstable");
-    table.text("feedbacks");
-    table.foreign("feedbacks").references("feedbacks.id");
-    table.string("suggestion");
-    table.foreign("suggestion").references("suggestion.id");
+    table.text("sustentable");
+    table
+      .integer("user_id")
+      .notNullable()
+      .references("id")
+      .inTable("user")
+      .onDelete("CASCADE"); // Add user_id foreign key
+    // table.foreign("feedbacks").references("feedbacks.id");
+    // table.string("suggestion");
+    // table.foreign("suggestion").references("suggestion.id");
   });
 }
 
