@@ -4,8 +4,11 @@ const getAllrecipes = async () => {
   return await recipyRepository.getAllrecipes();
 };
 
-const getById = async (id: number) => {
-  return await recipyRepository.getById(id);
+const getById = async ({ id }: { id: string | undefined }) => {
+  if (id?.trim() === "" || id === undefined) {
+    throw new Error("Id is required");
+  }
+  return await recipyRepository.getById(Number(id));
 };
 
 const getRecipyByName = async (name: string) => {
@@ -38,8 +41,12 @@ const updateRecipy = async (id: number, recipyData: any) => {
   );
 };
 
-const deleteRecipy = async (id: number) => {
-  return await recipyRepository.deleteRecipy(id);
+const deleteRecipy = async ({ id }: { id: string | undefined }) => {
+  if (id?.trim() === "" || id === undefined) {
+    throw new Error("Id is required");
+  }
+
+  return await recipyRepository.deleteRecipy(Number(id));
 };
 
 export default {
