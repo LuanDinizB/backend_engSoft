@@ -3,7 +3,7 @@ import config from "../../knexfile";
 
 const db = knex(config);
 
-export async function findUserByEmail(email: string): Promise<any | undefined> {
+ async function findUserByEmail(email: string): Promise<any | undefined> {
   try {
     const user = await db("user").where("email", email).first();
     return user;
@@ -11,8 +11,16 @@ export async function findUserByEmail(email: string): Promise<any | undefined> {
     throw error;
   }
 }
+ async function getById(id: string): Promise<any | undefined> {
+  try {
+    const user = await db("user").where("id", id).first();
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
 
-export async function createUser(
+ async function createUser(
   name: string,
   email: string,
   password: string
@@ -29,7 +37,7 @@ export async function createUser(
   }
 }
 
-export async function deleteUser(email: string): Promise<any> {
+ async function deleteUser(email: string): Promise<any> {
   try {
     const user: any = await db("user").delete().where({ email });
     return user;
@@ -38,7 +46,7 @@ export async function deleteUser(email: string): Promise<any> {
   }
 }
 
-export async function updateUser(email: string, data: object): Promise<void> {
+ async function updateUser(email: string, data: object): Promise<void> {
   try {
     await db("user").update(data).where({ email });
   } catch (error) {
@@ -46,7 +54,7 @@ export async function updateUser(email: string, data: object): Promise<void> {
   }
 }
 
-export async function updateUserPassword(
+ async function updateUserPassword(
   email: string,
   password: string
 ): Promise<void> {
@@ -67,5 +75,6 @@ export default {
   createUser,
   updateUser,
   updateUserPassword,
-  deleteUser
+  deleteUser,
+  getById
 };
