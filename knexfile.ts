@@ -7,7 +7,8 @@ const config: Knex.Config = {
   connection: `postgresql://postgres.gofvwaitpllshzdajgek:${process.env.DATABASE_PASSWORD}@aws-0-sa-east-1.pooler.supabase.com:6543/postgres`,
   migrations: {
     tableName: "knex_migrations",
-    directory: "./src/database"
+    directory: "./src/database",
+    
   }
 };
 

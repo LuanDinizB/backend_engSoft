@@ -37,7 +37,8 @@ export async function createRecipy(
   difficulty: string,
   prepareMode: string,
   sustentable: string,
-  userId: number
+  userId: number,
+  isIa: boolean
 ): Promise<any> {
   try {
     const recipe: any = await db("recipes").insert({
@@ -47,7 +48,8 @@ export async function createRecipy(
       difficulty,
       prepareMode,
       sustentable,
-      userId
+      userId,
+      isIa
     });
     return recipe;
   } catch (error) {
@@ -62,7 +64,8 @@ export async function updateRecipy(
   prepareTime: string,
   difficulty: string,
   prepareMode: string,
-  sustentable: string
+  sustentable: string,
+  isIa: boolean
 ): Promise<void> {
   try {
     await db("recipes")
@@ -72,7 +75,8 @@ export async function updateRecipy(
         prepareTime,
         difficulty,
         prepareMode,
-        sustentable
+        sustentable,
+        isIa
       })
       .where({ id });
   } catch (error) {

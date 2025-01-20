@@ -89,4 +89,5 @@ export default {
   updateRecipe,
   deleteRecipe,
   getByName
+
 };

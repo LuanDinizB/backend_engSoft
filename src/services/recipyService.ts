@@ -20,7 +20,8 @@ const createRecipy = async (recipyData: any) => {
     recipyData.difficulty,
     recipyData.prepareMode,
     recipyData.sustentable,
-    recipyData.userId
+    recipyData.userId,
+    recipyData.isIa
   );
 };
 
@@ -32,7 +33,8 @@ const updateRecipy = async (id: number, recipyData: any) => {
     recipyData.prepareTime,
     recipyData.difficulty,
     recipyData.prepareMode,
-    recipyData.sustentable
+    recipyData.sustentable,
+    recipyData.isIa
   );
 };
 
