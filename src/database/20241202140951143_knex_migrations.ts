@@ -15,6 +15,7 @@ export async function up(knex: Knex): Promise<void> {
       .references("id")
       .inTable("user")
       .onDelete("CASCADE"); // Add user_id foreign key
+      table.boolean("isIa");
   });
 }
 

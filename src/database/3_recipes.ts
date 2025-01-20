@@ -13,6 +13,7 @@ export async function up(knex: Knex): Promise<void> {
     table.foreign("feedbacks").references("feedbacks.id");
     table.string("suggestion");
     table.foreign("suggestion").references("suggestion.id");
+    
   });
 }
 
