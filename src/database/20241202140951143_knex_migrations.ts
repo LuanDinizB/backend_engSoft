@@ -9,13 +9,13 @@ export async function up(knex: Knex): Promise<void> {
     table.enum("difficulty", ["easy", "medium", "hard"]);
     table.string("prepareMode");
     table.text("sustentable");
+    table.boolean("isIa");
     table
       .integer("user_id")
       .notNullable()
       .references("id")
       .inTable("user")
       .onDelete("CASCADE"); // Add user_id foreign key
-      table.boolean("isIa");
   });
 }
 
