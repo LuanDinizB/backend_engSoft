@@ -5,6 +5,8 @@ const userRoute: Router = Router();
 
 userRoute.get("/get", userController.findUserByEmail);
 
+userRoute.get("/login", userController.login);
+
 userRoute.get("/getById", userController.getById);
 
 userRoute.post("/create", userController.createUser);

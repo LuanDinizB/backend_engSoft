@@ -8,9 +8,9 @@ const getById = async ({ id }: { id: string | undefined }) => {
 };
 
 const findUserByEmail = async ({ email }: { email: string | undefined }) => {
-    if (email?.trim() === "" || email === undefined) {
-        throw new Error("Email is required");
-      }
+  if (email?.trim() === "" || email === undefined) {
+    throw new Error("Email is required");
+  }
   return await userRepository.findUserByEmail(email);
 };
 

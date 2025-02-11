@@ -31,6 +31,26 @@ async function getById(
   }
 }
 
+
+async function login(
+  req: Request,
+  res: Response
+): Promise<any | undefined> {
+  try {
+    const {email, password} = req.query;
+    const user = await userService.findUserByEmail({email: email?.toString()});
+
+    if(user.password == password){
+      const timestamp = new Date().getTime() + 900000;
+      res.status(200).send(timestamp)
+    }
+
+    res.status(401).send("User not authorized");
+  } catch (error) {
+    res.send(`Error while finding user: ${error}`);
+  }
+}
+
 async function createUser(
   req: Request,
   res: Response
@@ -78,5 +98,5 @@ export default {
   createUser,
   updateUser,
   deleteUser,
-
+  login,
 };
