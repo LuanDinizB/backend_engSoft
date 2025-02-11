@@ -10,24 +10,41 @@ async function findUserByEmail(
   res: Response
 ): Promise<any | undefined> {
   try {
-    const {email} = req.query;
-    const user = await userService.findUserByEmail({email: email?.toString()});
+    const { email } = req.query;
+    const user = await userService.findUserByEmail({
+      email: email?.toString()
+    });
     res.status(200).send(user);
   } catch (error) {
     res.send(`Error while finding user: ${error}`);
   }
 }
 
-async function getById(
-  req: Request,
-  res: Response
-): Promise<any | undefined> {
+async function getById(req: Request, res: Response): Promise<any | undefined> {
   try {
-    const {id} = req.query;
-    const user = await userService.getById({id: id?.toString()});
+    const { id } = req.query;
+    const user = await userService.getById({ id: id?.toString() });
     res.status(200).send(user);
   } catch (error) {
     res.send(`Error while getting by id: ${error}`);
+  }
+}
+
+async function login(req: Request, res: Response): Promise<any | undefined> {
+  try {
+    const { email, password } = req.query;
+    const user = await userService.findUserByEmail({
+      email: email?.toString()
+    });
+
+    if (user.password == password) {
+      const timestamp = new Date().getTime() + 900000;
+      res.status(200).send(`${timestamp}`);
+    } else {
+      res.status(401).send("User not authorized");
+    }
+  } catch (error) {
+    res.send(`Error while finding user: ${error}`);
   }
 }
 
@@ -39,7 +56,7 @@ async function createUser(
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
-    await userService.createUser(name,email,password);
+    await userService.createUser(name, email, password);
     res.status(200).send("Created with success");
   } catch (error) {
     res.send(`Error while creating user: ${error}`);
@@ -78,5 +95,5 @@ export default {
   createUser,
   updateUser,
   deleteUser,
-
+  login
 };
