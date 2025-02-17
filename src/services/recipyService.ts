@@ -11,6 +11,13 @@ const getById = async ({ id }: { id: string | undefined }) => {
   return await recipyRepository.getById(Number(id));
 };
 
+const getByUserId = async ({ userId }: { userId: string | undefined }) => {
+  if (userId?.trim() === "" || userId === undefined) {
+    throw new Error("Id is required");
+  }
+  return await recipyRepository.getByUserId(Number(userId));
+};
+
 const getRecipyByName = async (name: string) => {
   return await recipyRepository.findRecipyByName(name);
 };
@@ -55,5 +62,6 @@ export default {
   getRecipyByName,
   createRecipy,
   updateRecipy,
-  deleteRecipy
+  deleteRecipy,
+  getByUserId
 };

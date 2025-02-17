@@ -30,6 +30,19 @@ async function getById(
   }
 }
 
+async function getByUserId(
+  req: Request,
+  res: Response
+): Promise<any | undefined> {
+  try {
+    const {userId} = req.query;
+    const recipe = await recipeService.getByUserId({userId: userId?.toString()});
+    res.status(200).send(recipe);
+  } catch (error) {
+    res.send(`Error while getting by name: ${error}`);
+  }
+}
+
 async function getByName(
   req: Request,
   res: Response
@@ -88,6 +101,6 @@ export default {
   createRecipe,
   updateRecipe,
   deleteRecipe,
-  getByName
-
+  getByName,
+  getByUserId
 };

@@ -9,6 +9,8 @@ recipyRoute.get("/getAllRecipes", recipyController.getAllrecipes);
 
 recipyRoute.get("/getById", recipyController.getById);
 
+recipyRoute.get("/getByUserId", recipyController.getByUserId);
+
 recipyRoute.post("/createRecipe", recipyController.createRecipe);
 
 recipyRoute.delete("/deleteRecipe", recipyController.deleteRecipe);

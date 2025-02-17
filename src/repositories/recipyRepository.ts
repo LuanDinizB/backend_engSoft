@@ -21,6 +21,15 @@ export async function getById(id: number): Promise<any | undefined> {
   }
 }
 
+export async function getByUserId(userId: number): Promise<any | undefined> {
+  try {
+    const recipes = await db("recipes").where("userId", userId);
+    return recipes;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function findRecipyByName(name: string): Promise<any | undefined> {
   try {
     const recipe = await db("recipes").where("name", name).first();
@@ -99,5 +108,6 @@ export default {
   createRecipy,
   updateRecipy,
   deleteRecipy,
-  getAllrecipes
+  getAllrecipes,
+  getByUserId
 };
