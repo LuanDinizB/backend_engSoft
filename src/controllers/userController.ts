@@ -36,15 +36,17 @@ async function login(
   res: Response
 ): Promise<any | undefined> {
   try {
-    const {email, password} = req.query;
-    const user = await userService.findUserByEmail({email: email?.toString()});
+    const { email, password } = req.query;
+    const user = await userService.findUserByEmail({
+      email: email?.toString()
+    });
 
-    if(user.password == password){
+    if (user.password == password) {
       const timestamp = new Date().getTime() + 900000;
-      res.status(200).send(timestamp)
+      res.status(200).send(`${timestamp}`);
+    } else {
+      res.status(401).send("User not authorized");
     }
-
-    res.status(401).send("User not authorized");
   } catch (error) {
     res.send(`Error while finding user: ${error}`);
   }
