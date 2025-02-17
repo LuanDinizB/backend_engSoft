@@ -37,9 +37,9 @@ const db = knex(config);
   }
 }
 
- async function deleteUser(email: string): Promise<any> {
+ async function deleteUser(id: string): Promise<any> {
   try {
-    const user: any = await db("user").delete().where({ email });
+    const user: any = await db("user").delete().where({ id });
     return user;
   } catch (error) {
     throw error;

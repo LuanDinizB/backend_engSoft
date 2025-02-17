@@ -18,16 +18,17 @@ const createUser = async (name: string, email: string, password: string) => {
   return await userRepository.createUser(name, email, password);
 };
 
-const updateUser = async (email: string, data: object) => {
+const updateUser = async (email: string, data: { [key: string]: any }) => {
+  delete data.email;
   return await userRepository.updateUser(email, data);
 };
 
-const deleteUser = async ({ email }: { email: string | undefined }) => {
-  if (email?.trim() === "" || email === undefined) {
+
+const deleteUser = async (id: string) => {
+  if (id === undefined) {
     throw new Error("Id is required");
   }
-
-  return await userRepository.deleteUser(email);
+  return await userRepository.deleteUser(id);
 };
 
 export default {

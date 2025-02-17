@@ -72,7 +72,7 @@ async function updateUser(
 ): Promise<any | undefined> {
   try {
     const body = req.body;
-    const recipe = await userService.updateUser(body.id, body);
+    const recipe = await userService.updateUser(body.email, body);
     res.status(200).send(recipe);
   } catch (error) {
     res.send(`Error while updating user: ${error}`);
@@ -88,7 +88,7 @@ async function deleteUser(
     await userService.deleteUser(id);
     res.status(200).send("User deleted");
   } catch (error) {
-    res.send(`Error while delete user: ${error}`);
+    res.status(500).send(`Error while delete user: ${error}`);
   }
 }
 
